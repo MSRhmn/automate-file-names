@@ -1,4 +1,4 @@
-# Automate names.
+# Automate Names
 
 - Automate file and directory names with `python` using the built in `os` module.
 - Execute the `automate_parse.py` file from the command line and check the `files_demo` directory.
