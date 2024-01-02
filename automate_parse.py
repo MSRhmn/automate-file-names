@@ -4,16 +4,18 @@ print("*** Please make sure, you are passing the correct path ****")
 wd_path = input("Enter a working directory path: ")
 
 
+def check_path():
+    """
+    This function checks if the user has passed a path.
+    Otherwise it will use the default demo path.
+    """
+    if wd_path:
+        return os.chdir(wd_path)
+    else:
+        return os.chdir("./files_demo")
+
+
 def main():
-    def check_path():
-        """
-        This function checks if the user has passed a path.
-        Otherwise it will use the default demo path.
-        """
-        if wd_path:
-            return os.chdir(wd_path)
-        else:
-            return os.chdir("./files_demo")
 
     check_path()
 
