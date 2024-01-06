@@ -3,8 +3,8 @@ import os
 print("*** Make sure that you are passing the correct path ***\n")
 
 wd_path = input("Enter a working directory path: ")
-mark_item = input("Enter the item name that has to be replaced: ")
-change_item = input("Enter the item name that will be replaced with: ")
+mark_char = input("Enter the item name that has to be replaced: ")
+change_char = input("Enter the item name that will be replaced with: ")
 
 
 def check_path():
@@ -29,8 +29,8 @@ def main():
             # This splitext method does as it says, splits the extension from file name.
             f_name, f_ext = os.path.splitext(f)
             # Check if the user has provided file modifying inputs.
-            if mark_item and change_item:
-                new_name = f_name.replace(mark_item, change_item) + f_ext
+            if mark_char and change_char:
+                new_name = f_name.replace(mark_char, change_char) + f_ext
             else:
                 new_name = f_name.replace(".", "-") + f_ext
             os.rename(f, new_name)
