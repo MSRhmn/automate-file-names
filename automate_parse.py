@@ -1,10 +1,10 @@
 import os
 
-print("*** Make sure that you are passing the correct path ***\n")
+print("** Make sure that you are passing the correct path **\n")
 
 wd_path = input("Enter a working directory path: ")
-mark_char = input("Enter the item name that has to be replaced: ")
-change_char = input("Enter the item name that will be replaced with: ")
+mark_char = input("Enter the char name that has to be replaced: ")
+change_char = input("Enter the char name that will be replaced with: ")
 
 
 def check_path():
