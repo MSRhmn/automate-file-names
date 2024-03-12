@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 print("** Make sure that you are passing the correct path **\n")
 
@@ -13,27 +13,24 @@ def check_path():
     Otherwise it will use the default demo path.
     """
     if wd_path:
-        return os.chdir(wd_path)
+        return Path(wd_path).resolve()
     else:
-        return os.chdir("./files_demo")
+        return Path("./files_demo").resolve()
 
 
 def main():
 
-    check_path()
+    working_dir = check_path()
 
-    # This listdir method from os module checks files/directories in the current working directory.
-    for f in os.listdir():
+    # This iterdir method from pathlib module checks files/directories in the current working directory.
+    for f in working_dir.iterdir():
         # isfile method checks if it is a file or not.
-        if os.path.isfile(f):
-            # This splitext method does as it says, splits the extension from file name.
-            f_name, f_ext = os.path.splitext(f)
-            # Check if the user has provided file modifying inputs.
+        if f.is_file():
+            # f.stem gets the file name while f.suffix has extension name.
+            f_name, f_ext = f.stem, f.suffix
             if mark_char and change_char:
                 new_name = f_name.replace(mark_char, change_char) + f_ext
-            else:
-                new_name = f_name.replace(".", "-") + f_ext
-            os.rename(f, new_name)
+            f.rename(working_dir / new_name)
 
 
 if __name__ == "__main__":
