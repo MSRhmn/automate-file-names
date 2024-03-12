@@ -2,7 +2,7 @@ from pathlib import Path
 
 print("** Make sure that you are passing the correct path **\n")
 
-wd_path = input("Enter a working directory path: ")
+path = input("Enter a working directory path: ")
 mark_char = input("Enter the char name that has to be replaced: ")
 change_char = input("Enter the char name that will be replaced with: ")
 
@@ -12,8 +12,8 @@ def check_path():
     This function checks if the user has passed a path.
     Otherwise it will use the default demo path.
     """
-    if wd_path:
-        return Path(wd_path).resolve()
+    if path:
+        return Path(path).resolve()
     else:
         return Path("./files_demo").resolve()
 
