@@ -21,12 +21,23 @@ class FileRenamer:
 
     def rename_files(self):
         """Rename files in the working directory."""
-        # This iterdir method from pathlib module checks files/directories in the current working directory.
-        for f in self.working_dir.iterdir():
-            # isfile method checks if it is a file or not.
-            if f.is_file():
-                # f.stem gets the file name while f.suffix has extension name.
-                f_name, f_ext = f.stem, f.suffix
-                if self.mark_char and self.change_char:
-                    new_name = f_name.replace(self.mark_char, self.change_char) + f_ext
-                f.rename(self.working_dir / new_name)
+        try:
+            if not self.working_dir.exists():
+                raise FileNotFoundError(
+                    f"Directory '{self.working_dir}' does not exist."
+                )
+
+            if not (self.mark_char and self.change_char):
+                raise ValueError("Both 'mark_char' and 'change_char' must be provided.")
+
+            for f in self.working_dir.iterdir():
+                if f.is_file():
+                    # f.stem gets the file name while f.suffix has extension name.
+                    f_name, f_ext = f.stem, f.suffix
+                    if self.mark_char and self.change_char:
+                        new_name = (
+                            f_name.replace(self.mark_char, self.change_char) + f_ext
+                        )
+                    f.rename(self.working_dir / new_name)
+        except Exception as e:
+            print(e)
