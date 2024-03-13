@@ -1,7 +1,7 @@
 from automate_parse import FileRenamer
 
 
-def print_input():
+def print_input(path):
     """Checking if the user has provided a path or not."""
     if path:
         print(
@@ -16,7 +16,7 @@ def print_input():
 def main():
     print("** Make sure that you are passing the correct path. **\n")
     path = input("Enter a working directory path: ")
-    print_input()
+    print_input(path)
     mark_char = input("Enter the char name that has to be replaced: ")
     change_char = input("Enter the char name that will be replaced with: ")
 
