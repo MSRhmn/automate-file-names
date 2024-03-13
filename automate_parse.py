@@ -15,9 +15,9 @@ class FileRenamer:
         Otherwise it will use the default demo path.
         """
         if path:
-            return Path(path).resolve()
+            return Path(path)
         else:
-            return Path("./files_demo").resolve()
+            return Path("./files_demo")
 
     def rename_files(self):
         """Rename files in the working directory."""
