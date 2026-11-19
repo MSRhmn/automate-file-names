@@ -22,8 +22,23 @@ def main():
 
     try:
         renamer = FileRenamer(path, mark_char, change_char)
-        renamer.rename_files()
-    except (OSError, ValueError) as error:
+        planned = renamer.rename_files()
+        if not planned:
+            print("No matching files found.")
+            return
+
+        print("Planned renames:")
+        for source, destination in planned:
+            print(f"  {source.name} -> {destination.name}")
+
+        answer = input("Apply these changes? [y/N]: ").strip().lower()
+        if answer != "y":
+            print("No files were renamed.")
+            return
+
+        renamer.apply_renames(planned)
+        print(f"Renamed {len(planned)} file(s).")
+    except (OSError, ValueError, RuntimeError) as error:
         print(f"Error: {error}")
 
 
