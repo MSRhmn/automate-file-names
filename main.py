@@ -10,8 +10,8 @@ def build_parser():
     )
     parser.add_argument(
         "--directory",
-        default="./files_demo",
-        help="directory to scan (default: ./files_demo)",
+        required=True,
+        help="directory to scan",
     )
     parser.add_argument(
         "--find",
